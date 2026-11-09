@@ -1,0 +1,5 @@
+dist
+node_modules
+
+native/results.txt
+native/editor-*.jsonl

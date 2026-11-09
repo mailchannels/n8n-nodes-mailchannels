@@ -1,0 +1,54 @@
+{
+  "name": "@mailchannels/n8n-nodes-mailchannels",
+  "version": "0.1.0",
+  "description": "n8n community node for sending email with the MailChannels Email API",
+  "license": "MIT",
+  "homepage": "https://docs.mailchannels.com/email-api/overview",
+  "keywords": [
+    "n8n-community-node-package"
+  ],
+  "author": {
+    "name": "MailChannels",
+    "email": "dev@mailchannels.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mailchannels/n8n-nodes-mailchannels.git"
+  },
+  "bugs": {
+    "url": "https://github.com/mailchannels/n8n-nodes-mailchannels/issues"
+  },
+  "scripts": {
+    "build": "n8n-node build",
+    "build:watch": "tsc --watch",
+    "dev": "n8n-node dev",
+    "lint": "n8n-node lint",
+    "lint:fix": "n8n-node lint --fix",
+    "test": "node --test tests/contract.cjs",
+    "release": "n8n-node release",
+    "prepublishOnly": "n8n-node prerelease"
+  },
+  "files": [
+    "dist/nodes",
+    "dist/credentials"
+  ],
+  "n8n": {
+    "n8nNodesApiVersion": 1,
+    "strict": true,
+    "credentials": [
+      "dist/credentials/MailChannelsApi.credentials.js"
+    ],
+    "nodes": [
+      "dist/nodes/MailChannels/MailChannels.node.js"
+    ]
+  },
+  "devDependencies": {
+    "@n8n/node-cli": "0.54.1",
+    "eslint": "9.32.0",
+    "prettier": "3.6.2",
+    "typescript": "5.9.2"
+  },
+  "peerDependencies": {
+    "n8n-workflow": "*"
+  }
+}
