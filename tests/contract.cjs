@@ -77,3 +77,4 @@ test('cumulative binary budget stops before reading later fields',async()=>{
  f.context.helpers.getBinaryDataBuffer=async()=>{reads++;return Buffer.alloc(12_000_000);};
  await assert.rejects(f.run(),/before dispatch/);assert.equal(reads,2);assert.equal(f.calls.length,0);
 });
+test('node is offered to AI agents as a tool and uses the MailChannels icon',()=>{const d=new MailChannels().description;assert.equal(d.usableAsTool,true);assert.deepEqual(d.icon,{light:'file:mailchannels.svg',dark:'file:mailchannels.svg'});});
