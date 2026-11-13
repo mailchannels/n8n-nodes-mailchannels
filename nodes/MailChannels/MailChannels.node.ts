@@ -10,10 +10,10 @@ import { NodeConnectionTypes, NodeOperationError } from 'n8n-workflow';
 // Local serialized-JSON budget; the provider separately enforces its encoded-message limit.
 const MAX_REQUEST_BYTES = 30_000_000;
 
-// Binary attachments need incoming item data; AI-tool execution is not supported.
+// Binary attachments need incoming item data, so they only work when the node runs in a workflow.
 export class MailChannels implements INodeType {
 	description: INodeTypeDescription = {
-		usableAsTool: undefined,
+		usableAsTool: true,
 		icon: { light: 'file:mailchannels.svg', dark: 'file:mailchannels.svg' },
 		subtitle: '={{$parameter.operation}}',
 		displayName: 'MailChannels',
