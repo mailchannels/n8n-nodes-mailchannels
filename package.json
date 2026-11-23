@@ -1,6 +1,6 @@
 {
   "name": "@mailchannels/n8n-nodes-mailchannels",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "n8n community node for sending email with the MailChannels Email API",
   "license": "MIT",
   "homepage": "https://docs.mailchannels.com/email-api/overview",

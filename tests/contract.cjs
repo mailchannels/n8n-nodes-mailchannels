@@ -2,6 +2,7 @@ const { test } = require('node:test');
 const assert = require('node:assert/strict');
 const { MailChannels } = require('../dist/nodes/MailChannels/MailChannels.node.js');
 const { MailChannelsApi } = require('../dist/credentials/MailChannelsApi.credentials.js');
+const { version } = require('../package.json');
 const base={from:{email:'sender@example.invalid'},personalizations:[{to:[{email:'to@example.invalid'}],cc:[{email:'cc@example.invalid'}],bcc:[{email:'bcc@example.invalid'}]}],reply_to:{email:'reply@example.invalid'},subject:'café',content:[{type:'text/plain',value:'hello'},{type:'text/html',value:'<p>hello</p>'}]};
 function fixture(params=[{}],responses=[],keep=false) {
  const calls=[];
@@ -77,3 +78,4 @@ test('cumulative binary budget stops before reading later fields',async()=>{
  f.context.helpers.getBinaryDataBuffer=async()=>{reads++;return Buffer.alloc(12_000_000);};
  await assert.rejects(f.run(),/before dispatch/);assert.equal(reads,2);assert.equal(f.calls.length,0);
 });
+test('every authenticated request, including the credential test, names the package version in User-Agent',()=>{assert.deepEqual(new MailChannelsApi().authenticate.properties.headers,{'X-Api-Key':'={{$credentials.apiKey}}','User-Agent':`mailchannels-n8n/${version}`});});
